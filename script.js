@@ -22,17 +22,18 @@ average_age = Math.round(sum/people.length);
 console.log("Средний возраст людей: " + average_age);
 
 //Кого больше мужчин или женщин?
-var female = 0;
-var male = 0;
-for (var key in people){
-  if(people[key].sex === "female") {
-      female++;
-  } else if(people[key].sex === "male"){
-      male++;
-  }
-}
-if (female > male) {
+var femaleMas = people.filter(function(people, i){
+    if (people.sex === "female") {
+        return ++i;
+    }  
+});
+ var kol_female = femaleMas.length;
+ var kol_male = people.length - femaleMas.length;
+
+if (kol_female === kol_male) {
+  console.log("Мужчин и женщин поровну");
+} else if (kol_female > kol_male) {
   console.log("Женщин больше в этом обществе!");
 } else {
   console.log("Мужчин больше в этом обществе!");
-} 
+}
